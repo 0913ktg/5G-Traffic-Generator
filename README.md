@@ -1,8 +1,7 @@
 # 5G Traffic Generation for Practical Simulations Using Open Datasets
 
-**[뱃지나 프로젝트에 관한 이미지들이 이 위치에 들어가면 좋습니다]**  
-<img width="1058" alt="5GT-GAN" src="https://user-images.githubusercontent.com/57590655/198479302-1f7e1be4-76fe-4a3b-b0f7-f0f3fd8c156f.png">
-<img width="634" alt="N-HiTS-5G" src="https://user-images.githubusercontent.com/57590655/198479304-63fb8af7-1d81-40bf-a2a6-e84e44da81b6.png">
+<img width="1076" alt="5GT-GAN" src="https://user-images.githubusercontent.com/57590655/198483530-cb958da0-4b29-45c1-8556-94aa4f4be211.png">
+<img width="1019" alt="N-HiTS-5G" src="https://user-images.githubusercontent.com/57590655/198483553-84d4dd52-a69f-4f1c-a979-a1f94937c7ca.png">
 
 ## Getting Started / 어떻게 시작하나요?
 
