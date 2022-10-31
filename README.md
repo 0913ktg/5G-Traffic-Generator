@@ -3,11 +3,14 @@
 <img width="1076" alt="5GT-GAN" src="https://user-images.githubusercontent.com/57590655/198483530-cb958da0-4b29-45c1-8556-94aa4f4be211.png">
 <img width="1019" alt="N-HiTS-5G" src="https://user-images.githubusercontent.com/57590655/198483553-84d4dd52-a69f-4f1c-a979-a1f94937c7ca.png">
 
-## Getting Started / 어떻게 시작하나요?
+## Getting Started 
 
-이 곳에서 설치에 관련된 이야기를 해주시면 좋습니다.
+### Environment
+* Ubuntu 20.04 LTS
+* Docker 
+* Pytorch & Pytorch Lightning
 
-### Prerequisites / 선행 조건
+### Prerequisites 
 
 아래 사항들이 설치가 되어있어야합니다.
 
