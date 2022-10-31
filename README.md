@@ -11,19 +11,12 @@
 * Pytorch & Pytorch Lightning
 
 ### Prerequisites 
+* Recommend install CUDA, CUDNN
 
-아래 사항들이 설치가 되어있어야합니다.
-
-```
-예시
-```
-
-### Installing / 설치
-
-아래 사항들로 현 프로젝트에 관한 모듈들을 설치할 수 있습니다.
+### Installing
 
 ```
-예시
+pip install requirements.txt
 ```
 
 ## Running the tests / 테스트의 실행
