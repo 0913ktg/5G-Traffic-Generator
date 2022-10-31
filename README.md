@@ -27,12 +27,15 @@
 
 어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
 
-### 테스트는 이런 식으로 동작합니다
+### N-HiTS-5G
 
-왜 이렇게 동작하는지, 설명합니다
+First run model_train.py
+
+select dataset name
+select datatype (ul, dl)
 
 ```
-예시
+python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
 ```
 
 ### 테스트는 이런 식으로 작성하시면 됩니다
