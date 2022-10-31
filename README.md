@@ -15,29 +15,43 @@
 
 ### Installing
 
+### N-HiTS-5G
+
 ```
-pip install requirements.txt
+cd N-HiTS-5G
+pip install - r requirements.txt
 ```
 
-## Running the tests / 테스트의 실행
-
-어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
+## Running the tests
 
 ### N-HiTS-5G
 
-First run model_train.py
-
-select dataset name
-select datatype (ul, dl)
+1. Run model_train.py
+#### Options
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ hyperopt_max_evals : Enter the maximum number of evaluations for hyperparameter tuning.
++ experiment_id : Enter a title for the current experiment.
 
 ```
 python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
 ```
 
-### 테스트는 이런 식으로 작성하시면 됩니다
+2. Run inference.py
+#### Option
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ experiment_id : Enter a title for the current experiment.
++ size : Enter the size of the traffic you want to generate (output length = horizon * size).
 
 ```
-예시
+python3 inference.py --dataset afreeca --datatype dl --experiment_id test_1 --size 10
+```
+
+3. Run evaluation.py
+
+```
+python3 evaluation.py
 ```
 
 ## Deployment / 배포
