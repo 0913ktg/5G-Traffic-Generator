@@ -1,6 +1,6 @@
 _target_: data.data_util.TrafficDataModule
 
 seq_len: 300
-data_paths: "data/Traffics.csv"
+data_path: "data/Traffics.csv"
 batch_size: 64
 one_hot: False

@@ -10,7 +10,7 @@ import os
 
 
 class TrafficDataModule(LightningDataModule):
-    def __init__(self, seq_len, data_paths, one_hot=False,
+    def __init__(self, seq_len, data_path, one_hot=False,
                  batch_size=64):
         super(TrafficDataModule, self).__init__()
         self.label = None
@@ -22,7 +22,7 @@ class TrafficDataModule(LightningDataModule):
         self.one_hot = one_hot
         self.batch_size = batch_size
 
-        self.data_paths = data_paths
+        self.data_paths = data_path
 
         self.conditions = []
 
@@ -30,16 +30,20 @@ class TrafficDataModule(LightningDataModule):
 
     def setup(self, stage=None):
         if stage == 'fit' or stage is None:
+            # Set training dataset
             self.load_data(self.data_paths)
         else:
+            # Set conditions for inference
             self.load_data(self.data_paths, stage=stage)
 
-    def load_data(self, data_paths, stage='fit'):
-        df = pd.read_csv(os.getcwd() + '/' + data_paths)
+    def load_data(self, data_path, stage='fit'):
+        df = pd.read_csv(os.getcwd() + '/' + data_path)
         df = df[df.columns[~df.columns.str.contains('Unnamed')]]
         self.scaled_df = pd.DataFrame()
         self.cols = df.columns
         datas = []
+
+        # Normalize each data and apply sliding window algorithm for data augmentation
         for i, col in enumerate(self.cols):
             scaler = MinMaxScaler(feature_range=(-1, 1))
             transformed = scaler.fit_transform(df[col].dropna().to_numpy()[:, np.newaxis])
@@ -54,6 +58,7 @@ class TrafficDataModule(LightningDataModule):
         self.data = torch.tensor(np.concatenate(datas, axis=0), dtype=torch.float32)
         self.create_condition([len(data) for data in datas], stage=stage)
 
+    # Create condition vectors for training input
     def create_condition(self, len_datas, stage='fit'):
         labels = []
         print('Creating Conditions')
