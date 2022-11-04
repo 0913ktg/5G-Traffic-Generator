@@ -353,16 +353,6 @@ def model_train(mc, S_df, Y_df, X_df, f_cols, ds_in_val, ds_in_test, dataset_nam
                                                                 val_dataset=val_dataset,
                                                                 test_dataset=test_dataset)
     
-    # save train loader
-    if datatype:
-        output_dir = f'loaders/dl/{dataset_name}'
-    else:
-        output_dir = f'loaders/ul/{dataset_name}'
-    
-    os.makedirs(output_dir, exist_ok = True)
-    assert os.path.exists(output_dir), f'Output dir {output_dir} does not exist'
-    torch.save(train_loader, f"{output_dir}/{dataset_name}_{horizon}_loader.pth")
-    
     model = instantiate_model(mc=mc)
     callbacks = []
     if mc['early_stop_patience']:
@@ -388,10 +378,10 @@ def model_train(mc, S_df, Y_df, X_df, f_cols, ds_in_val, ds_in_test, dataset_nam
     trainer.fit(model, train_loader, val_loader)
     
     # make directories to save models
-    output_dir = f'models/{dataset_name}/{dataset_name}_{horizon}'
+    output_dir = f'best_ckpt/{dataset_name}/{dataset_name}_{horizon}'
     os.makedirs(output_dir, exist_ok = True)
     assert os.path.exists(output_dir), f'Output dir {output_dir} does not exist'
-    torch.save(model, output_dir + f'/{experiment_name}.pt')    
+    trainer.save_checkpoint(output_dir + f'/{experiment_name}.ckpt')
 
 def model_fit_predict(mc, S_df, Y_df, X_df, f_cols, evaluate_train, ds_in_val, ds_in_test):
 
