@@ -133,7 +133,8 @@ if __name__ == '__main__':
         args.datatype = False
     if args is None:
         exit()
-    horizons = [10, 48, 96, 192, 336, 720]
+    # horizons = [10, 48, 96, 192, 336, 720]
+    horizons = [10]
     
     for horizon in horizons:
         print(50*'-', args.dataset, 50*'-')
@@ -152,8 +153,7 @@ if __name__ == '__main__':
     for horizon in horizons:
         dir = f'hp_result/{args.dataset}/{args.dataset}_{horizon}/hyperopt_{args.experiment_id}.p'
         _, _, mc = get_score_min_val(dir)
-        mc['max_epochs'] = 2000
-        
+        mc['max_epochs'] = 2000        
         
         X_df, Y_df, S_df, _, _ = make_data(args.dataset, args.exogenous, make_dl = args.datatype)        
         
