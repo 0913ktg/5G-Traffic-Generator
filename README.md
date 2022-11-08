@@ -17,62 +17,53 @@
 
 ### N-HiTS-5G
 
-  ```
-  cd N-HiTS-5G
-  pip install - r requirements.txt
-  ```
+```
+cd N-HiTS-5G
+pip install -r requirements.txt
+```
 
 ## Running the tests
 
 ### N-HiTS-5G
 
-  1. Run model_train.py
-    #### Options
-    + dataset : Select one name for the dataset want to learn.
-    + datatype : Select one name for the dataset type want to learn (ul or dl).
-    + hyperopt_max_evals : Enter the maximum number of evaluations for hyperparameter tuning.
-    + experiment_id : Enter a title for the current experiment.
+1. Run model_train.py
+#### Options
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ hyperopt_max_evals : Enter the maximum number of evaluations for hyperparameter tuning.
++ experiment_id : Enter a title for the current experiment.
 
-    ```
-    python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
-    ```
+```
+python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
+```
 
-  2. Run inference.py
-    #### Option
-    + dataset : Select one name for the dataset want to learn.
-    + datatype : Select one name for the dataset type want to learn (ul or dl).
-    + experiment_id : Enter a title for the current experiment.
-    + size : Enter the size of the traffic you want to generate (output length = horizon * size).
+2. Run inference.py
+#### Option
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ experiment_id : Enter a title for the current experiment.
++ size : Enter the size of the traffic you want to generate (output length = horizon * size).
 
-    ```
-    python3 inference.py --dataset afreeca --datatype dl --experiment_id test_1 --size 10
-    ```
+```
+python3 inference.py --dataset afreeca --datatype dl --experiment_id test_1 --size 10
+```
 
-  3. Run evaluation.py
+3. Run evaluation.py
 
-    ```
-    python3 evaluation.py
-    ```
+```
+python3 evaluation.py
+```
 
-## Deployment / 배포
+## Built With
 
-Add additional notes about how to deploy this on a live system / 라이브 시스템을 배포하는 방법
+* [DAEGYEOM KIM](https://github.com/0913ktg) - Implementation of the N-HiTS-5G model
+* [MYEONGJIN KO](https://github.com/KoMyeongjin) - Implementation of the 5GT-GAN model
 
-## Built With / 누구랑 만들었나요?
+## License
 
-* [이름](링크) - 무엇 무엇을 했어요
-* [Name](Link) - Create README.md
+This project is licensed under the MIT License
 
-## Contributiong / 기여
+## Acknowledgments
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
-
-## License / 라이센스
-
-This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/PurpleBooth/LICENSE.md) file for details / 이 프로젝트는 MIT 라이센스로 라이센스가 부여되어 있습니다. 자세한 내용은 LICENSE.md 파일을 참고하세요.
-
-## Acknowledgments / 감사의 말
-
-* Hat tip to anyone whose code was used / 코드를 사용한 모든 사용자들에게 팁
-* Inspiration / 영감
-* etc / 기타
+* Date of submission October 31, 2022.  
+* This work was supported by the In-stitute for Information & communications Technology Promotion (IITP) grant funded by the Korea government (MSIT) (No. 2021-0-00092); and in part by the National Research Foundation of Korea (NRF) grant funded by the Korea government Ministry of Science and ICT (No. 2021R1F1A1064080). 
