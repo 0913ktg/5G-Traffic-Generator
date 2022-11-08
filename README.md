@@ -17,42 +17,42 @@
 
 ### N-HiTS-5G
 
-  ```
-  cd N-HiTS-5G
-  pip install - r requirements.txt
-  ```
+```
+cd N-HiTS-5G
+pip install - r requirements.txt
+```
 
 ## Running the tests
 
 ### N-HiTS-5G
 
-  1. Run model_train.py
-  #### Options
-  + dataset : Select one name for the dataset want to learn.
-  + datatype : Select one name for the dataset type want to learn (ul or dl).
-  + hyperopt_max_evals : Enter the maximum number of evaluations for hyperparameter tuning.
-  + experiment_id : Enter a title for the current experiment.
+1. Run model_train.py
+#### Options
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ hyperopt_max_evals : Enter the maximum number of evaluations for hyperparameter tuning.
++ experiment_id : Enter a title for the current experiment.
 
-  ```
-  python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
-  ```
+```
+python3 model_train.py --dataset afreeca --datatype dl --hyperopt_max_evals 10 --experiment_id test_1
+```
 
-  2. Run inference.py
-  #### Option
-  + dataset : Select one name for the dataset want to learn.
-  + datatype : Select one name for the dataset type want to learn (ul or dl).
-  + experiment_id : Enter a title for the current experiment.
-  + size : Enter the size of the traffic you want to generate (output length = horizon * size).
+2. Run inference.py
+#### Option
++ dataset : Select one name for the dataset want to learn.
++ datatype : Select one name for the dataset type want to learn (ul or dl).
++ experiment_id : Enter a title for the current experiment.
++ size : Enter the size of the traffic you want to generate (output length = horizon * size).
 
-  ```
-  python3 inference.py --dataset afreeca --datatype dl --experiment_id test_1 --size 10
-  ```
+```
+python3 inference.py --dataset afreeca --datatype dl --experiment_id test_1 --size 10
+```
 
-  3. Run evaluation.py
+3. Run evaluation.py
 
-  ```
-  python3 evaluation.py
-  ```
+```
+python3 evaluation.py
+```
 
 ## Deployment / 배포
 
