@@ -61,7 +61,7 @@ python3 evaluation.py
 
 ## License / 라이센스
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/PurpleBooth/LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgments / 감사의 말
 
