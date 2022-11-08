@@ -9,12 +9,15 @@ from model.submodels.Generator import Generator
 class GAN(LightningModule):
     def __init__(self, seq_len, latent_dim, cond_dim, hidden, n_layers, sample_size, lr=2e-4):
         super(GAN, self).__init__()
+
+        # Init Generator and Discriminator
         self.G = Generator(latent_dim + cond_dim, hidden=hidden, num_layers=n_layers)
         self.D = Discriminator(input_size=cond_dim + 1, n_layers=8, n_channel=10, kernel_size=8, seq_len=seq_len,
                                dropout=0)
 
         self.lr = lr
 
+        # Init optimizer
         self.d_optim = Adam(self.D.parameters(), lr=self.lr)
         self.g_optim = Adam(self.G.parameters(), lr=self.lr)
 
@@ -25,6 +28,7 @@ class GAN(LightningModule):
         self.bce_loss = nn.BCELoss()
         self.fm_loss = nn.MSELoss()
 
+        # Set fixed noise for compare generated data of each epoch
         self.fixed_z = self.sample_Z(sample_size, seq_len, latent_dim).to(self.device)
 
         self.save_hyperparameters()
@@ -39,9 +43,11 @@ class GAN(LightningModule):
         return loss * 2
 
     def training_step(self, batch, batch_idx, optimizer_idx):
+        # Get batch, y is real traffic and c is condition vector
         y, c = batch
         z = self.sample_Z(batch_size=len(y), seq_length=self.seq_len, latent_dim=self.latent_dim).to(self.device)
 
+        # Train Generator
         if optimizer_idx == 0:
             y_h = self(z, c)
 
@@ -59,12 +65,16 @@ class GAN(LightningModule):
             self.log('feature_loss', f_loss.clone())
 
             return {'loss': loss, 'g_loss': g_loss.detach(), 'f_loss': f_loss.detach()}
+
+        # Train Discriminator
         else:
             fake = self(z, c)
 
             fake_d, _ = self.D(fake, c)
             real_d, _ = self.D(y.unsqueeze(-1), c)
 
+            # Calculate BCE Loss of Discriminator's output with real data
+            # Real output's BCE Loss is calculated with label 0.9 for one-sided label smoothing
             loss_real = self.bce_loss(real_d, torch.ones_like(real_d).to(self.device) * 0.9)
             loss_fake = self.bce_loss(fake_d, torch.zeros_like(fake_d).to(self.device))
 
@@ -74,6 +84,7 @@ class GAN(LightningModule):
 
             return d_loss
 
+    # Create condition vector for only one category of data
     def create_condition(self, condition, len_data):
         label = torch.tensor([[condition] * self.seq_len] * len_data)
 
@@ -82,6 +93,7 @@ class GAN(LightningModule):
     def configure_optimizers(self):
         return [self.g_optim, self.d_optim], []
 
+    # Create random noise
     def sample_Z(self, batch_size, seq_length, latent_dim):
         sample = torch.randn(batch_size, seq_length, latent_dim).to(self.device)
 

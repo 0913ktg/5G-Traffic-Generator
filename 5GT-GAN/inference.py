@@ -3,38 +3,29 @@ import hydra
 import pandas as pd
 import torch
 
-cols = ['Afreeca_DL_bitrate', 'Afreeca_UL_bitrate',
-        'Amazon_DL_bitrate', 'Amazon_UL_bitrate',
-        'Meet_DL_bitrate', 'Meet_UL_bitrate',
-        'Navernow_DL_bitrate', 'Navernow_UL_bitrate',
-        'Netflix_DL_bitrate', 'Netflix_UL_bitrate',
-        'teams_DL_bitrate', 'Teams_UL_bitrate',
-        'Youtube_UL_bitrate', 'Youtube_DL_bitrate',
-        'YoutubeLive_DL_bitrate', 'YoutubeLive_UL_bitrate',
-        'Zoom_DL_bitrate', 'Zoom_UL_bitrate',
-        'TFT_DL_Bitrate', 'TFT_UL_Bitrate',
-        'BattleGround_DL_Bitrate', 'BattleGround_UL_Bitrate',
-        'Geforce_DL_Bitrate', 'Geforce_UL_Bitrate',
-        'GameBox_DL_Bitrate', 'GameBox_UL_Bitrate',
-        'Zepeto_DL_Bitrate', 'Zepeto_UL_Bitrate',
-        'Roblox_DL_Bitrate', 'Roblox_UL_Bitrate']
-
 
 @hydra.main(config_path='config', config_name='config')
 def inference(cfg):
     version = cfg.checkpoint.version
     epoch = cfg.checkpoint.epoch
 
+    # Get columns for create conditions
+    df = pd.read_csv(cfg.data.data_path)
+    cols = df.columns[~df.columns.str.contains('Unnamed')]
+
+    # Get datamodule for create conditions and fit scalers
     dm = hydra.utils.instantiate(cfg.data)
     dm.setup(stage='inference')
+    print('Load from ckpt')
     model = GAN.load_from_checkpoint(cfg.checkpoint.path)
     if torch.cuda.is_available():
         model = model.cuda()
-    print('Load from ckpt')
+    print('Model loaded')
     model.eval()
 
     print('inference start')
     df = pd.DataFrame()
+    # Generate data for each conditions
     for i, condition in enumerate(dm.conditions):
         z = model.sample_Z(cfg.checkpoint.batch_size, 300, 100)
         gen = model(z.cuda(), model.create_condition(condition, len(z)).cuda())

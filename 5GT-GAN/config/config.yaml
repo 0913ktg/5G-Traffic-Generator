@@ -4,5 +4,5 @@ defaults:
   - data: TrafficDataModule
   - checkpoint: inference
 
-VERSION: 15
+VERSION: 1
 MODEL_NAME: 5GT-GAN
