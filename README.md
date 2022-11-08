@@ -59,12 +59,11 @@ python3 evaluation.py
 * [DAEGYEOM KIM](https://github.com/0913ktg) - Implementation of the N-HiTS-5G model
 * [MYEONGJIN KO](https://github.com/KoMyeongjin) - Implementation of the 5GT-GAN model
 
-## License / 라이센스
+## License
 
 This project is licensed under the MIT License
 
-## Acknowledgments / 감사의 말
+## Acknowledgments
 
-* Hat tip to anyone whose code was used / 코드를 사용한 모든 사용자들에게 팁
-* Inspiration / 영감
-* etc / 기타
+* Date of submission October 31, 2022.  
+* This work was supported by the In-stitute for Information & communications Technology Promotion (IITP) grant funded by the Korea government (MSIT) (No. 2021-0-00092); and in part by the National Research Foundation of Korea (NRF) grant funded by the Korea government Ministry of Science and ICT (No. 2021R1F1A1064080). 
