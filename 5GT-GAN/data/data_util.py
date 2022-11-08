@@ -10,8 +10,7 @@ import os
 
 
 class TrafficDataModule(LightningDataModule):
-    def __init__(self, seq_len, data_path, one_hot=False,
-                 batch_size=64):
+    def __init__(self, seq_len, data_path, batch_size=64):
         super(TrafficDataModule, self).__init__()
         self.label = None
         self.data = None
@@ -19,7 +18,6 @@ class TrafficDataModule(LightningDataModule):
         self.scaled_df = None
         self.seq_len = seq_len
         self.scalers = {}
-        self.one_hot = one_hot
         self.batch_size = batch_size
 
         self.data_paths = data_path
