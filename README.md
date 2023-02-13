@@ -2,6 +2,8 @@
 
 <img width="1076" alt="5GT-GAN" src="https://user-images.githubusercontent.com/57590655/198483530-cb958da0-4b29-45c1-8556-94aa4f4be211.png">
 <img width="1019" alt="N-HiTS-5G" src="https://user-images.githubusercontent.com/57590655/198483553-84d4dd52-a69f-4f1c-a979-a1f94937c7ca.png">
+<img width="1019" alt="Generated Traffics by 5GT-GAN model" src="https://user-images.githubusercontent.com/57590655/218432567-101176bb-fda9-4baa-97f0-bc7bdb489130.png">
+<img width="1019" alt="Generated Traffics by N-HiTS-5G model" src="https://user-images.githubusercontent.com/57590655/218432296-c817e824-de15-434e-98ce-71ac8243fafd.png">
 
 ## Getting Started
 
