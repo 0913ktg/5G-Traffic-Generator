@@ -1,5 +1,7 @@
 # 5G Traffic Generation for Practical Simulations Using Open Datasets
 
+## Model Architecture
+
 <img width="1076" alt="5GT-GAN" src="https://user-images.githubusercontent.com/57590655/198483530-cb958da0-4b29-45c1-8556-94aa4f4be211.png">
 <img width="1019" alt="N-HiTS-5G" src="https://user-images.githubusercontent.com/57590655/198483553-84d4dd52-a69f-4f1c-a979-a1f94937c7ca.png">
 
