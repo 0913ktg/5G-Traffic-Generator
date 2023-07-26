@@ -116,6 +116,18 @@ pip install -r requirements.txt
 
 This project is licensed under the MIT License
 
+## Citations
+
+```bibtex
+@article{choi2023mlbased,
+  title={ML-Based 5G Traffic Generation for Practical Simulations Using Open Datasets},
+  author={Yong-Hoon Choi, Daegyeom Kim, Myeongjin Ko, Kyung-yul Cheon, Seungkeun Park, Yunbae Kim, Hyungoo Yoon},
+  journal={IEEE Communications Magazine},
+  year={2023},
+  note={To appear}
+}
+```
+
 ## Acknowledgments
 
 * Date of submission October 31, 2022.  
